@@ -139,13 +139,13 @@ Use `--help` for more options.
 1. **Build the image**
 
    ```bash
-   docker build -t api-stress-tester:latest .
+   docker compose build
    ```
 
 2. **Run the container**
 
    ```bash
-   docker run --rm -p 8000:8000 api-stress-tester:latest
+   docker compose up
    ```
 
 3. **Open Swagger UI**
@@ -173,9 +173,13 @@ Feel free to import the schema into Postman or any other API tool.
 5. Open a Pull Request.
 
 Please follow the existing code style and include tests for new functionality.
+> **Logging & Tracking:**
+> - Each individual request’s status and latency are printed to the terminal and saved in the `logs/` directory (`logs/stress_log_YYYYMMDD_HHMMSS.txt`).
+> - Use these logs to monitor real-time request execution and diagnose failures.
+
+> **Swagger Response:**
+> - The final summary (total requests, successes, failures, average latency, throughput) is returned in the JSON response when you call the `/stress-test` endpoint.
+> - You can view this response directly in the Swagger UI under the "Try it out" panel for `/stress-test`.
 
 ---
-
-## License
-
 MIT License. See [LICENSE](LICENSE) for details.

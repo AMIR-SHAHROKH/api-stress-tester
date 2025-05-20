@@ -8,11 +8,10 @@ app = FastAPI(
     title="API Stress Tester",
     description="Asynchronous API stress testing with real-time metrics.",
     version="1.0.0",
-    docs_url=None,        # disable default docs
-    redoc_url=None        # disable default redoc
+    docs_url=None,
+    redoc_url=None
 )
 
-# Serve a custom-themed Swagger UI
 @app.get("/docs", include_in_schema=False)
 async def custom_swagger_ui_html():
     return get_swagger_ui_html(
@@ -20,17 +19,14 @@ async def custom_swagger_ui_html():
         title="🔧 API Stress Tester Docs",
         swagger_favicon_url="https://fastapi.tiangolo.com/img/favicon.png",
         swagger_ui_parameters={
-            "docExpansion": "list",            # list endpoints by default
-            "defaultModelsExpandDepth": -1,      # hide schema models section
-            "persistAuthorization": True         # keep auth data on reload
+            "docExpansion": "list",
+            "defaultModelsExpandDepth": -1,
+            "persistAuthorization": True
         }
     )
 
 @app.post("/stress-test", response_model=StressTestResponse)
 async def stress_test(req: StressTestRequest):
-    """
-    Launch a stress test against the specified URL.
-    """
     result: StressResult = await run_stress_test(
         url=req.url,
         duration=req.duration,
