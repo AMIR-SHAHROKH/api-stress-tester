@@ -35,7 +35,7 @@ api-stress-tester/
 
 ---
 
-## Getting Started
+## Getting Started (I suggest that you run it with docker )
 
 ### Prerequisites
 
@@ -153,16 +153,6 @@ Use `--help` for more options.
 
 ---
 
-## Swagger / OpenAPI Specification
-
-This project uses FastAPI to automatically generate an OpenAPI schema. You can find the raw JSON/YAML at:
-
-* JSON: `http://localhost:8000/openapi.json`
-* YAML: `http://localhost:8000/openapi.yaml`
-
-Feel free to import the schema into Postman or any other API tool.
-
----
 
 ## Contributing
 
